@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="100%" height="100%" style="background:#171722; border-radius:16px; font-family:'Segoe UI',system-ui,-apple-system,sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C4B5FD" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#818CF8" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.85"/>
+    </linearGradient>
+
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#34D399"/>
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#222233" stop-opacity="0.88"/>
+      <stop offset="100%" stop-color="#1B1B2A" stop-opacity="0.96"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="subtleGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Dots Grid -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <circle cx="20" cy="20" r="1.2" fill="#4B5563" opacity="0.35"/>
+  </pattern>
+  <rect width="1000" height="420" fill="url(#grid)" rx="16"/>
+
+  <!-- Native SVG SMIL Animated Scanner Outer Rings -->
+  <circle cx="500" cy="210" r="140" fill="none" stroke="#818CF8" stroke-width="1.8" stroke-dasharray="6 8">
+    <animate attributeName="r" values="134;146;134" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.3;0.85;0.3" dur="4s" repeatCount="indefinite" />
+  </circle>
+
+  <circle cx="500" cy="210" r="115" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-dasharray="4 6">
+    <animate attributeName="r" values="118;108;118" dur="3s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.75;0.35;0.75" dur="3s" repeatCount="indefinite" />
+  </circle>
+
+  <!-- Native SVG SMIL Flowing Connecting Pipelines -->
+  <!-- Left to Center -->
+  <path d="M 270 210 L 410 210" stroke="#818CF8" stroke-width="3" fill="none" stroke-dasharray="8 12">
+    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2s" repeatCount="indefinite" />
+  </path>
+
+  <!-- Center to Right Top -->
+  <path d="M 590 210 Q 655 210 710 145" stroke="#38BDF8" stroke-width="3" fill="none" stroke-dasharray="8 12">
+    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2.2s" repeatCount="indefinite" />
+  </path>
+
+  <!-- Center to Right Bottom -->
+  <path d="M 590 210 Q 655 210 710 275" stroke="#34D399" stroke-width="3" fill="none" stroke-dasharray="8 12">
+    <animate attributeName="stroke-dashoffset" from="100" to="0" dur="2.5s" repeatCount="indefinite" />
+  </path>
+
+  <!-- Left Card: User & Dynamic Agent Reasoning -->
+  <g transform="translate(40, 95)">
+    <rect width="230" height="230" rx="14" fill="url(#cardGrad)" stroke="#4F46E5" stroke-width="1.5" filter="url(#subtleGlow)"/>
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#4F46E5" opacity="0.3"/>
+    <text x="26" y="40" font-size="18" fill="#A5B4FC">🤖</text>
+    <text x="62" y="32" font-size="14" font-weight="bold" fill="#F8FAFC">AI Shopping Agent</text>
+    <text x="62" y="48" font-size="11" fill="#94A3B8">Dynamic Intent Pipeline</text>
+
+    <!-- Code / Prompt Terminal -->
+    <rect x="16" y="70" width="198" height="52" rx="8" fill="#13131E" stroke="#312E81" stroke-width="1"/>
+    <text x="26" y="90" font-size="10.5" fill="#C4B5FD" font-family="'JetBrains Mono',monospace">&gt; "keeb under 80 bucks"</text>
+    <text x="26" y="108" font-size="9.5" fill="#38BDF8" font-family="'JetBrains Mono',monospace">✓ intent: KEYBOARDS</text>
+    
+    <!-- Blinking Cursor -->
+    <rect x="145" y="98" width="6" height="12" fill="#38BDF8">
+      <animate attributeName="opacity" values="1;0;1" dur="0.8s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- Tool calls breakdown -->
+    <text x="16" y="148" font-size="10.5" font-weight="600" fill="#E2E8F0">Active Tool Execution:</text>
+    <g transform="translate(16, 158)">
+      <rect width="92" height="22" rx="6" fill="#312E81" opacity="0.6"/>
+      <text x="8" y="15" font-size="9" fill="#A5B4FC" font-family="monospace">search_products</text>
+    </g>
+    <g transform="translate(114, 158)">
+      <rect width="90" height="22" rx="6" fill="#064E3B" opacity="0.6"/>
+      <text x="8" y="15" font-size="9" fill="#6EE7B7" font-family="monospace">assess_listing</text>
+    </g>
+
+    <text x="16" y="206" font-size="10" fill="#64748B">Zero-Hardcoded Rules</text>
+    <!-- Pulsing Live Dot -->
+    <circle cx="198" cy="203" r="4" fill="#34D399" filter="url(#glow)">
+      <animate attributeName="r" values="3.5;5;3.5" dur="1.6s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.5;1;0.5" dur="1.6s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- Center Card: Floating Holographic Trust Shield -->
+  <g>
+    <animateTransform attributeName="transform" type="translate" values="0,0; 0,-8; 0,0" dur="4.5s" repeatCount="indefinite" />
+
+    <!-- Outer Shield Hexagon Glow -->
+    <polygon points="500,120 570,165 570,255 500,300 430,255 430,165" fill="#1E1B4B" stroke="url(#shieldGrad)" stroke-width="3.5" filter="url(#glow)"/>
+    
+    <!-- Holographic Scanning Facets -->
+    <line x1="500" y1="120" x2="500" y2="300" stroke="#A5B4FC" stroke-width="1.2" opacity="0.6"/>
+    <line x1="430" y1="165" x2="570" y2="255" stroke="#38BDF8" stroke-width="1.2" opacity="0.5"/>
+    <line x1="430" y1="255" x2="570" y2="165" stroke="#818CF8" stroke-width="1.2" opacity="0.5"/>
+
+    <!-- Center Trust Shield Badge -->
+    <circle cx="500" cy="210" r="32" fill="#171722" stroke="#34D399" stroke-width="2.5"/>
+    <text x="488" y="218" font-size="24">🛡️</text>
+
+    <!-- Metric Pill below Shield -->
+    <rect x="440" y="318" width="120" height="28" rx="8" fill="#111827" stroke="#34D399" stroke-width="1.5"/>
+    <text x="452" y="336" font-size="11" font-weight="bold" fill="#34D399">99.4% TRUST SLA</text>
+  </g>
+
+  <!-- Right Top Card: 5-Vector Telemetry with animated bars -->
+  <g transform="translate(710, 45)">
+    <rect width="250" height="150" rx="14" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1.5" filter="url(#subtleGlow)"/>
+    <text x="16" y="28" font-size="13" font-weight="bold" fill="#F8FAFC">5-Vector Forensic Engine</text>
+    <text x="16" y="44" font-size="10" fill="#94A3B8">Real-time listing verification</text>
+
+    <!-- Vector 1: Markdown Anomaly -->
+    <text x="16" y="68" font-size="10" fill="#E2E8F0">1. Markdown Variance</text>
+    <rect x="145" y="60" width="85" height="8" rx="4" fill="#334155"/>
+    <rect x="145" y="60" width="70" height="8" rx="4" fill="#38BDF8">
+      <animate attributeName="width" values="64;78;64" dur="3s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Vector 2: Merchant History -->
+    <text x="16" y="90" font-size="10" fill="#E2E8F0">2. Merchant History</text>
+    <rect x="145" y="82" width="85" height="8" rx="4" fill="#334155"/>
+    <rect x="145" y="82" width="78" height="8" rx="4" fill="#34D399">
+      <animate attributeName="width" values="74;82;74" dur="4s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Vector 3: Bot Review Burst -->
+    <text x="16" y="112" font-size="10" fill="#E2E8F0">3. Review Velocity</text>
+    <rect x="145" y="104" width="85" height="8" rx="4" fill="#334155"/>
+    <rect x="145" y="104" width="22" height="8" rx="4" fill="#F43F5E">
+      <animate attributeName="width" values="18;28;18" dur="2.5s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- Vector 4: Hardware Specs -->
+    <text x="16" y="134" font-size="10" fill="#E2E8F0">4. Hardware Integrity</text>
+    <rect x="145" y="126" width="85" height="8" rx="4" fill="#334155"/>
+    <rect x="145" y="126" width="75" height="8" rx="4" fill="#818CF8">
+      <animate attributeName="width" values="70;80;70" dur="3.5s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Right Bottom Card: PayPal Checkout Authorization -->
+  <g transform="translate(710, 220)">
+    <rect width="250" height="150" rx="14" fill="url(#cardGrad)" stroke="#34D399" stroke-width="1.5" filter="url(#subtleGlow)"/>
+    <text x="16" y="28" font-size="13" font-weight="bold" fill="#F8FAFC">PayPal Sandbox Orders v2</text>
+    <text x="16" y="44" font-size="10" fill="#94A3B8">Cryptographic Price Authority</text>
+
+    <!-- Receipt Snapshot -->
+    <rect x="16" y="58" width="218" height="48" rx="8" fill="#13131E" stroke="#064E3B" stroke-width="1"/>
+    <text x="26" y="76" font-size="10" fill="#6EE7B7" font-family="'JetBrains Mono',monospace">CAPTURE ID: 89X77421B</text>
+    <text x="26" y="94" font-size="10" fill="#CBD5E1" font-family="'JetBrains Mono',monospace">STATUS: COMPLETED (VERIFIED)</text>
+
+    <!-- Status pill -->
+    <rect x="16" y="116" width="105" height="22" rx="6" fill="#065F46"/>
+    <text x="26" y="131" font-size="10" font-weight="bold" fill="#34D399">✓ 100% SECURE</text>
+
+    <text x="135" y="131" font-size="11" font-weight="bold" fill="#38BDF8">Orders API v2</text>
+  </g>
+
+  <!-- Header Brand Bar -->
+  <text x="40" y="45" font-size="22" font-weight="bold" fill="#F8FAFC" letter-spacing="1">TRUSTCART <tspan fill="#C4B5FD">AI</tspan></text>
+  <text x="210" y="44" font-size="11" fill="#94A3B8">| PayPal AI Hackathon 2026 Autonomous Neural Platform</text>
+</svg>

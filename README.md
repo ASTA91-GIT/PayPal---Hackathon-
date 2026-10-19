@@ -5,9 +5,9 @@
 
 ---
 
-## 🎬 System Architecture & Live Telemetry
-
-![TrustCart AI Animated Architecture & Execution Pipeline](./public/brand/trustcart-animated-pipeline.svg)
+<p align="center">
+  <img src="public/brand/trustcart-animated-pipeline.svg" alt="TrustCart AI Animated Architecture &amp; Execution Pipeline" width="100%" />
+</p>
 
 ```
 ┌─────────────────────────┐      ┌─────────────────────────┐      ┌─────────────────────────┐
