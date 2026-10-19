@@ -8,15 +8,16 @@
 <p align="center">
   <img src="public/brand/trustcart-animated-pipeline.svg" alt="TrustCart AI Animated Architecture &amp; Execution Pipeline" width="100%" />
 </p>
-```
 
+```
 ┌────────────────────────────┐     ┌────────────────────────────┐     ┌────────────────────────────┐
-│       🤖 DYNAMIC AGENT     │──► │    🛡️ 5-VECTOR RISK ENGINE │ ──► │      💳 PAYPAL ORDERS V2    │
-├────────────────────────────┤     ├────────────────────────────┤     ├────────────────────────────  ┤
-│ • Zero Hardcoded Rules     │     │ • Markdown Anomaly (35)    │     │ • Server-Side Price Authority│
-│ • Typo & Slang Resilience  │     │ • Merchant History (20)    │     │ • Instant Sandbox Capture    │
-│ • Anaphora Resolution      │     │ • Bot Review Burst (15)    │     │ • Cryptographic Receipt      │
+│       🤖 DYNAMIC AGENT     │──►  │   🛡️ 5-VECTOR RISK ENGINE  │──►  │    💳 PAYPAL ORDERS V2     │
+├────────────────────────────┤     ├────────────────────────────┤     ├────────────────────────────┤
+│ • Zero Hardcoded Rules     │     │ • Markdown Anomaly (35)    │     │ • Server Price Authority   │
+│ • Typo & Slang Resilience  │     │ • Merchant History (20)    │     │ • Instant Sandbox Capture  │
+│ • Anaphora Resolution      │     │ • Bot Review Burst (15)    │     │ • Cryptographic Receipt    │
 └────────────────────────────┘     └────────────────────────────┘     └────────────────────────────┘
+```
 
 ---
 
@@ -29,23 +30,6 @@ Unlike traditional shopping bots that blindly recommend sponsored listings, Trus
 2. **Deterministic 5-Vector Risk Engine**: Calculates an explainable $0-100$ observed risk score evaluating price markdown anomalies, merchant dispute histories, hardware specification integrity, and bot velocity bursts.
 3. **Server Price Authority**: Eliminates client tampering by calculating taxes, shipping, and discounts directly from trusted database models.
 4. **Official PayPal Sandbox Integration**: Executes transactions via the official PayPal Orders API v2, issuing verified cryptographic capture receipts.
-
----
-
-## 🎨 Design System: Pastel Glassmorphism (Stitch Spec)
-
-TrustCart AI adheres to the **dual-theme pastel architecture**:
-
-- **Dreamy Pastel Light Mode**: `#F8F7FC` background, translucent lavender cards (`#9D87E8`), powder blue accents (`#5BA8C2`), and dark slate typography (`#29263D`).
-- **Midnight Pastels Dark Mode**: Deep space obsidian (`#171722`), glowing soft lavender (`#C4B5FD`), sky blue (`#A9D9F0`), and frosted acrylic surfaces.
-- **Dimensional 3D Hero Scene**: Interactive Three.js scene featuring an icosahedron trust shield, holographic concentric scanning rings, and a gentle particle field with depth-aware lighting and mouse parallax.
-- **Transparent Auth**: Immersive `/login` and `/register` interfaces placing interactive forms directly over the 3D scene without opaque cards.
-- **Typography Stack**:
-  - Display Headings: **Syne** (with Akira Expanded styling)
-  - Subheadings & Cards: **Plus Jakarta Sans**
-  - Body Text: **Inter**
-  - Technical Data & Hashes: **JetBrains Mono**
-  - Cyber Status Pills: **Italic Monospace Badges**
 
 ---
 
@@ -79,84 +63,6 @@ TrustCart AI adheres to the **dual-theme pastel architecture**:
 - **Database & ORM**: SQLite (zero-config local dev) / PostgreSQL compatible via Prisma ORM
 - **Payment Gateway**: Official PayPal JavaScript SDK v6 (`@paypal/react-paypal-js`) & PayPal Orders API v2
 - **Testing**: Vitest unit, parameterized, and property-based invariant test suite
-
----
-
-## 💻 How to Run the Project
-
-Follow these step-by-step instructions to set up, run, and test TrustCart AI locally.
-
-### 1. Prerequisites
-Ensure you have the following installed on your machine:
-- **Node.js**: `v20.0.0` or higher (Node `v22` / `v24` supported)
-- **npm**: `v10.0.0` or higher
-- **Git**: Latest version
-
-Verify your local environment:
-```bash
-node -v
-npm -v
-git --version
-```
-
-### 2. Clone the Repository
-```bash
-git clone https://github.com/ASTA91-GIT/PayPal---Hackathon-.git
-cd PayPal---Hackathon-
-```
-
-### 3. Install Dependencies
-```bash
-npm install
-```
-
-### 4. Configure Environment Variables
-Copy `.env.example` to create your local `.env`:
-```bash
-cp .env.example .env
-```
-
-Your `.env` file will look like this:
-```env
-# Database configuration (zero-config SQLite)
-DATABASE_URL="file:./dev.db"
-
-# PayPal Sandbox Configuration
-NEXT_PUBLIC_PAYPAL_CLIENT_ID="sb"
-PAYPAL_CLIENT_SECRET=""
-PAYPAL_ENVIRONMENT="sandbox"
-PAYPAL_WEBHOOK_ID=""
-
-# Optional AI Model API Keys (Supports Google Gemini or OpenAI)
-# If left empty, TrustCart AI automatically runs its resilient dynamic semantic pipeline
-GEMINI_API_KEY=""
-OPENAI_API_KEY=""
-
-# Application URL
-NEXT_PUBLIC_APP_URL="http://localhost:3000"
-```
-
-> **Note on AI Keys**: `GEMINI_API_KEY` and `OPENAI_API_KEY` are **optional**. When omitted, TrustCart AI seamlessly falls back to its built-in dynamic semantic engine, ensuring zero downtime and fully offline hackathon evaluations!
-
-### 5. Initialize Database & Seed Catalog
-Run the Prisma migrations and execute the database seed script:
-```bash
-npm run db:push
-npm run db:seed
-```
-*This populates the SQLite database with 22 realistic hardware listings, 8 merchant profiles, simulated fraud flags, and the demo user.*
-
-### 6. Start the Development Server
-```bash
-npm run dev
-```
-Open **[http://localhost:3000](http://localhost:3000)** in your browser.
-
-### 7. Demo Account Credentials
-You can log in at `/login` with the pre-seeded account:
-- **Email**: `olivia.vance@techcorp.io`
-- **Password**: `Password123!`
-*(Or click "Register new operator" to create any test account dynamically)*
 
 ---
 
