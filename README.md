@@ -5,15 +5,30 @@
 
 ---
 
+## 🎬 System Architecture & Live Telemetry
+
+![TrustCart AI Animated Architecture & Execution Pipeline](./public/brand/trustcart-animated-pipeline.svg)
+
+```
+┌─────────────────────────┐      ┌─────────────────────────┐      ┌─────────────────────────┐
+│   🤖 Dynamic Agent      │ ───► │  🛡️ 5-Vector Risk Engine│ ───► │   💳 PayPal Orders v2   │
+│  - Zero Hardcoded Rules │      │  - Markdown Anomaly (35)│      │  - Server Price Authority│
+│  - Typo & Slang Resilient│     │  - Merchant History (20)│      │  - Instant Sandbox Capture│
+│  - Anaphora Resolution  │      │  - Bot Review Burst (15)│      │  - Cryptographic Receipt│
+└─────────────────────────┘      └─────────────────────────┘      └─────────────────────────┘
+```
+
+---
+
 ## 🌟 Executive Summary
 
-**TrustCart AI** solves the crisis of e-commerce deception: counterfeit deals, scalped hardware, astroturfed reviews, and adversarial checkout manipulations. 
+**TrustCart AI** addresses the growing crisis of e-commerce deception: counterfeit deals, scalped hardware, astroturfed reviews, and adversarial checkout manipulations. 
 
-Unlike traditional shopping bots that blindly recommend products, TrustCart AI acts as an autonomous guardian:
-1. **Understands natural shopping intent** through structured LLM tool-calling.
-2. **Audits listings through a deterministic 5-vector risk engine** ($0-100$ observed risk score) evaluating price markdown anomalies, merchant dispute histories, specification completeness, and bot velocity.
-3. **Guarantees pricing authority on the server**, calculating taxes, shipping, and discounts directly from trusted database models.
-4. **Executes live transactions via the official PayPal Sandbox Orders API v2**, persisting verified cryptographic capture receipts.
+Unlike traditional shopping bots that blindly recommend sponsored listings, TrustCart AI acts as an autonomous guardian:
+1. **Dynamic Intent Understanding**: Interprets natural, informal user requests (including typos, slang, and combined multi-intent queries) without hardcoded question lists or string routing.
+2. **Deterministic 5-Vector Risk Engine**: Calculates an explainable $0-100$ observed risk score evaluating price markdown anomalies, merchant dispute histories, hardware specification integrity, and bot velocity bursts.
+3. **Server Price Authority**: Eliminates client tampering by calculating taxes, shipping, and discounts directly from trusted database models.
+4. **Official PayPal Sandbox Integration**: Executes transactions via the official PayPal Orders API v2, issuing verified cryptographic capture receipts.
 
 ---
 
@@ -24,6 +39,7 @@ TrustCart AI adheres to the **dual-theme pastel architecture**:
 - **Dreamy Pastel Light Mode**: `#F8F7FC` background, translucent lavender cards (`#9D87E8`), powder blue accents (`#5BA8C2`), and dark slate typography (`#29263D`).
 - **Midnight Pastels Dark Mode**: Deep space obsidian (`#171722`), glowing soft lavender (`#C4B5FD`), sky blue (`#A9D9F0`), and frosted acrylic surfaces.
 - **Dimensional 3D Hero Scene**: Interactive Three.js scene featuring an icosahedron trust shield, holographic concentric scanning rings, and a gentle particle field with depth-aware lighting and mouse parallax.
+- **Transparent Auth**: Immersive `/login` and `/register` interfaces placing interactive forms directly over the 3D scene without opaque cards.
 - **Typography Stack**:
   - Display Headings: **Syne** (with Akira Expanded styling)
   - Subheadings & Cards: **Plus Jakarta Sans**
@@ -57,91 +73,140 @@ TrustCart AI adheres to the **dual-theme pastel architecture**:
 
 - **Framework**: Next.js 16 (App Router, Turbopack, React 19)
 - **Language**: TypeScript (strict type checking)
-- **Styling**: Tailwind CSS v4 + Vanilla CSS Variables
-- **Animations & 3D**: Framer Motion + Three.js
+- **Styling**: Tailwind CSS v4 + Vanilla CSS Custom Properties
+- **3D & Graphics**: Three.js + Framer Motion
 - **Validation**: Zod runtime schema validation
 - **Database & ORM**: SQLite (zero-config local dev) / PostgreSQL compatible via Prisma ORM
 - **Payment Gateway**: Official PayPal JavaScript SDK v6 (`@paypal/react-paypal-js`) & PayPal Orders API v2
-- **Testing**: Vitest unit & integration test suite
+- **Testing**: Vitest unit, parameterized, and property-based invariant test suite
 
 ---
 
-## ⚡ Quick Start & Local Setup
+## 💻 How to Run the Project
+
+Follow these step-by-step instructions to set up, run, and test TrustCart AI locally.
 
 ### 1. Prerequisites
-- **Node.js** v20+ or v24+
-- **npm** v10+
+Ensure you have the following installed on your machine:
+- **Node.js**: `v20.0.0` or higher (Node `v22` / `v24` supported)
+- **npm**: `v10.0.0` or higher
+- **Git**: Latest version
 
-### 2. Clone and Install Dependencies
+Verify your local environment:
 ```bash
-git clone https://github.com/your-username/trustcart-ai.git
-cd trustcart-ai
+node -v
+npm -v
+git --version
+```
+
+### 2. Clone the Repository
+```bash
+git clone https://github.com/ASTA91-GIT/PayPal---Hackathon-.git
+cd PayPal---Hackathon-
+```
+
+### 3. Install Dependencies
+```bash
 npm install
 ```
 
-### 3. Environment Configuration
-Copy the provided `.env.example` to `.env`:
+### 4. Configure Environment Variables
+Copy `.env.example` to create your local `.env`:
 ```bash
 cp .env.example .env
 ```
-Default configuration runs zero-config SQLite out of the box:
+
+Your `.env` file will look like this:
 ```env
+# Database configuration (zero-config SQLite)
 DATABASE_URL="file:./dev.db"
+
+# PayPal Sandbox Configuration
 NEXT_PUBLIC_PAYPAL_CLIENT_ID="sb"
 PAYPAL_CLIENT_SECRET=""
 PAYPAL_ENVIRONMENT="sandbox"
+PAYPAL_WEBHOOK_ID=""
+
+# Optional AI Model API Keys (Supports Google Gemini or OpenAI)
+# If left empty, TrustCart AI automatically runs its resilient dynamic semantic pipeline
+GEMINI_API_KEY=""
+OPENAI_API_KEY=""
+
+# Application URL
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
 ```
 
-### 4. Initialize Database & Seed Catalog
-Push the Prisma schema and seed 22 realistic products across 4 categories with pre-computed risk assessments:
+> **Note on AI Keys**: `GEMINI_API_KEY` and `OPENAI_API_KEY` are **optional**. When omitted, TrustCart AI seamlessly falls back to its built-in dynamic semantic engine, ensuring zero downtime and fully offline hackathon evaluations!
+
+### 5. Initialize Database & Seed Catalog
+Run the Prisma migrations and execute the database seed script:
 ```bash
 npm run db:push
 npm run db:seed
 ```
+*This populates the SQLite database with 22 realistic hardware listings, 8 merchant profiles, simulated fraud flags, and the demo user.*
 
-### 5. Run the Application
-Start the local development server:
+### 6. Start the Development Server
 ```bash
 npm run dev
 ```
 Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
+### 7. Demo Account Credentials
+You can log in at `/login` with the pre-seeded account:
+- **Email**: `olivia.vance@techcorp.io`
+- **Password**: `Password123!`
+*(Or click "Register new operator" to create any test account dynamically)*
+
 ---
 
-## 💳 PayPal Sandbox Setup & Verification
+## 💳 PayPal Sandbox Setup & Testing
 
-TrustCart AI supports **both** live PayPal Sandbox developer keys and an instant zero-friction simulation mode:
+TrustCart AI supports **both** live PayPal Sandbox developer credentials and an **Instant 1-Click Sandbox Simulation Mode**:
 
-### Live PayPal Sandbox Mode
-1. Log in to [PayPal Developer Dashboard](https://developer.paypal.com/dashboard/applications/sandbox).
-2. Create or copy your Sandbox REST App credentials.
+### Option A: Instant 1-Click Sandbox Capture (Zero-Setup Evaluation)
+1. Add any item to your cart and navigate to `/checkout`.
+2. Check the **"Risk Certification"** toggle.
+3. Click the cyan **"⚡ Instant Quick Sandbox Capture"** button.
+4. The server validates pricing against the database, executes simulated capture authorization, records a persistent `PaymentCapture` transaction in SQLite, and forwards you to the verified Order Receipt (`/orders/[id]`).
+
+### Option B: Live PayPal Sandbox Credentials
+1. Visit the [PayPal Developer Dashboard](https://developer.paypal.com/dashboard/applications/sandbox).
+2. Create or copy your Sandbox REST App Client ID and Secret.
 3. Update `.env`:
    ```env
    NEXT_PUBLIC_PAYPAL_CLIENT_ID="your_sandbox_client_id"
    PAYPAL_CLIENT_SECRET="your_sandbox_client_secret"
    PAYPAL_ENVIRONMENT="sandbox"
    ```
-4. Restart `npm run dev`. Navigate to `/checkout` and complete payment with a Sandbox personal account.
-
-### Instant Sandbox Test (1-Click Evaluation Mode)
-If you do not have PayPal sandbox keys handy, the `/checkout` page includes an **"Instant Quick Sandbox Capture"** button. This executes the entire server validation pipeline, recalculates authoritative catalog prices, updates the database, creates a `PaymentCapture` record, and issues a verified receipt without external popups.
+4. Restart `npm run dev`.
+5. On `/checkout`, the official PayPal Smart Buttons will render. Complete checkout using any standard PayPal Sandbox Personal buyer account.
 
 ---
 
 ## 🧪 Running Automated Tests
 
-Run the Vitest test suite covering deterministic risk scoring, price markdown anomaly detection, and anti-tampering cart validation:
+TrustCart AI includes 68 automated unit, integration, and parameterized generalisation invariant tests:
+
 ```bash
 npm run test
 ```
 
-Expected result:
+### Verified Test Suites:
 ```
-✓ tests/cartCalculations.test.ts (4 tests)
-✓ tests/riskEngine.test.ts (4 tests)
+ ✓ tests/cartCalculations.test.ts (4 tests) - Server price authority & anti-tamper
+ ✓ tests/riskEngine.test.ts (4 tests) - 5-Vector deterministic risk scoring
+ ✓ tests/auth.test.ts (4 tests) - Scrypt hashing & timing-safe authentication
+ ✓ tests/agentGeneralisation.test.ts (56 tests) - Dynamic language invariants
 
-Test Files  2 passed (2)
-     Tests  8 passed (8)
+Test Files  4 passed (4)
+     Tests  68 passed (68)
+```
+
+To run a production build and type-check:
+```bash
+npm run build
+npm run start
 ```
 
 ---
@@ -149,25 +214,39 @@ Test Files  2 passed (2)
 ## 🎬 3-Minute Live Hackathon Demo Walkthrough
 
 1. **Step 1: The Landing Page (`/`)**
-   - Notice the pastel dual-theme palette. Toggle between **"Dreamy" (Light)** and **"Midnight" (Dark)** in the top bar.
-   - Interact with the 3D Holographic Trust Shield. Observe the live 4-Pack Bento metrics ($42.8M volume, 11ms latency).
+   - Toggle between **"Dreamy" (Light Mode)** and **"Midnight" (Dark Mode)** in the header.
+   - Interact with the Three.js 3D Holographic Trust Shield. Observe live telemetry metrics ($42.8M volume, 9ms SLA).
 2. **Step 2: AI Shopping Agent (`/agent`)**
-   - Click the demo prompt: *"Find me a mechanical gaming keyboard under $50 with good specifications and low observed risk."*
-   - Watch the agent parse the intent, invoke `search_products`, audit with `assess_listing`, compare options, and stream the honest tool traces.
-   - Click **"+ Cart"** on the recommended Keychron or Vortex keyboard.
+   - Type naturally with slang or typos: *"find a keeb below 80 bucks"*.
+   - Watch the agent resolve the category to Keyboards, parse the $80 budget limit, invoke `search_products`, audit with `assess_listing`, and stream honest tool execution traces.
+   - Follow up contextually: *"is it safe?"* or *"compare them"*.
 3. **Step 3: Forensic Deal Investigation (`/investigate/prod-gpu-fake-010`)**
-   - Navigate to the **RTX 4090 deal for $189** (slug: `geforce-rtx-4090-fake-listing`).
-   - Observe the **Critical Risk score (75+/100)**: flags severe price markdown (90% below MSRP) and bot syndicate review burst.
+   - Inspect the counterfeit RTX 4090 listed at $189.
+   - Review the **Critical Risk score (85/100)**: flags severe price markdown (90% below MSRP), short seller tenure, and bot review bursts.
 4. **Step 4: Verified Cart & PayPal Checkout (`/cart` → `/checkout`)**
-   - View the server-calculated subtotal, free shipping over $100, and tax fee.
+   - Observe server-recalculated subtotals, free shipping thresholds, and tax fees.
    - Click **Proceed to PayPal Checkout**.
-   - Review the Trust Clearance seal, check approval, and complete payment via **PayPal Buttons** or **Quick Sandbox Capture**.
+   - Check the risk clearance box and complete payment via **PayPal Smart Payment Buttons** or **Instant Quick Sandbox Capture**.
 5. **Step 5: Order Receipt & Trust Dashboard (`/orders/[id]` & `/dashboard`)**
    - Inspect the cryptographic PayPal Capture Certificate with persistent Capture ID.
-   - Open `/dashboard` to inspect the full transaction telemetry stream, neural heuristics chart, and cross-merchant cart graph anomaly inspired by the Stitch cockpit design.
+   - Open `/dashboard` to inspect live transaction stream telemetry, neural heuristics radar, and cross-merchant anomaly graphs.
 
 ---
 
-## 📄 License
+## ⚖️ Copyright & Legal Disclaimers
 
-Distributed under the **MIT License**. See `LICENSE` for more information.
+### Copyright Notice
+```
+Copyright (c) 2026 TrustCart AI Contributors. All rights reserved.
+Developed for the PayPal AI Hackathon 2026.
+```
+
+### License
+This project is open-source software licensed under the **[MIT License](LICENSE)**. You are free to inspect, modify, and distribute this codebase in accordance with the license conditions.
+
+### Third-Party Trademarks & Attribution
+- **PayPal**, **PayPal Sandbox**, **PayPal Orders API v2**, and respective logos are trademarks or registered trademarks of **PayPal Holdings, Inc.** or its affiliates.
+- All product names, logos, brands, and registered trademarks featured or referenced within this demonstration catalog are the property of their respective trademark holders. Their mention does not imply endorsement, affiliation, or sponsorship.
+
+---
+*Built with passion for the PayPal AI Hackathon 2026.*
