@@ -1,26 +1,154 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --bg-main: #F8F7FC;
+    --bg-sidebar: #F1EFF9;
+    --bg-surface: rgba(255, 255, 255, 0.78);
+    --bg-surface-elevated: rgba(255, 255, 255, 0.94);
+    --bg-surface-subtle: rgba(235, 230, 250, 0.55);
+    --bg-header: rgba(248, 247, 252, 0.88);
+    --border-color: rgba(116, 101, 158, 0.16);
+    --border-highlight: rgba(255, 255, 255, 0.85);
+
+    --text-primary: #29263D;
+    --text-secondary: #77738C;
+    --text-muted: #948FA8;
+
+    --accent-lavender: #9D87E8;
+    --accent-lavender-bg: rgba(184, 165, 245, 0.22);
+    --accent-blue: #5BA8C2;
+    --accent-blue-bg: rgba(168, 216, 232, 0.28);
+    --accent-pink: #D97E9E;
+    --accent-pink-bg: rgba(242, 201, 216, 0.32);
+
+    --status-mint: #2E8B65;
+    --status-mint-bg: rgba(196, 232, 213, 0.55);
+    --status-mint-border: rgba(46, 139, 101, 0.25);
+
+    --status-peach: #A66524;
+    --status-peach-bg: rgba(247, 220, 200, 0.6);
+    --status-peach-border: rgba(166, 101, 36, 0.25);
+
+    --status-coral: #C74A6A;
+    --status-coral-bg: rgba(236, 163, 180, 0.38);
+    --status-coral-border: rgba(199, 74, 106, 0.28);
+
+    --shadow-soft: 0 4px 20px -2px rgba(116, 101, 158, 0.08), 0 2px 6px -1px rgba(116, 101, 158, 0.04);
+    --shadow-glow: 0 0 24px -2px rgba(157, 135, 232, 0.25);
+  }
+
+  .dark {
+    --bg-main: #171722;
+    --bg-sidebar: #201F30;
+    --bg-surface: rgba(43, 40, 62, 0.72);
+    --bg-surface-elevated: rgba(52, 49, 75, 0.85);
+    --bg-surface-subtle: rgba(28, 26, 42, 0.7);
+    --bg-header: rgba(23, 23, 34, 0.88);
+    --border-color: rgba(210, 199, 255, 0.14);
+    --border-highlight: rgba(220, 215, 255, 0.08);
+
+    --text-primary: #F3F0FA;
+    --text-secondary: #B8B3CA;
+    --text-muted: #827E95;
+
+    --accent-lavender: #C4B5FD;
+    --accent-lavender-bg: rgba(196, 181, 253, 0.18);
+    --accent-blue: #A9D9F0;
+    --accent-blue-bg: rgba(169, 217, 240, 0.18);
+    --accent-pink: #F0BDD3;
+    --accent-pink-bg: rgba(240, 189, 211, 0.18);
+
+    --status-mint: #AEE4CD;
+    --status-mint-bg: rgba(174, 228, 205, 0.18);
+    --status-mint-border: rgba(174, 228, 205, 0.32);
+
+    --status-peach: #F3D0B4;
+    --status-peach-bg: rgba(243, 208, 180, 0.18);
+    --status-peach-border: rgba(243, 208, 180, 0.32);
+
+    --status-coral: #F59EA0;
+    --status-coral-bg: rgba(245, 158, 160, 0.2);
+    --status-coral-border: rgba(245, 158, 160, 0.35);
+
+    --shadow-soft: 0 8px 32px -4px rgba(0, 0, 0, 0.36);
+    --shadow-glow: 0 0 32px -2px rgba(196, 181, 253, 0.3);
+  }
+
+  * {
+    border-color: var(--border-color);
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-inter), sans-serif;
+    transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-x: hidden;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Glassmorphism and Utility Classes */
+.glass-panel {
+  background-color: var(--bg-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
+}
+
+.glass-panel-elevated {
+  background-color: var(--bg-surface-elevated);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
+}
+
+.glass-subtle {
+  background-color: var(--bg-surface-subtle);
+  border: 1px solid var(--border-color);
+}
+
+/* Custom Typography Utility Classes */
+.font-display {
+  font-family: var(--font-syne), sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.font-heading {
+  font-family: var(--font-plus-jakarta), sans-serif;
+}
+
+.font-body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-mono-tech {
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+.font-cyber-tag {
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-style: italic;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
 }

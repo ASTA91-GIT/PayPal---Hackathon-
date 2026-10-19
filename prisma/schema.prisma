@@ -1,0 +1,181 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Seller {
+  id              String    @id @default(uuid())
+  handle          String    @unique
+  name            String
+  rating          Float     @default(4.5)
+  reviewCount     Int       @default(0)
+  accountAgeDays  Int       @default(30)
+  country         String    @default("US")
+  isVerified      Boolean   @default(false)
+  disputeRate     Float     @default(0.01)
+  orderCount      Int       @default(100)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  products        Product[]
+}
+
+model Product {
+  id                String          @id @default(uuid())
+  title             String
+  slug              String          @unique
+  description       String
+  category          String
+  price             Float
+  currency          String          @default("USD")
+  referencePrice    Float?
+  stock             Int             @default(50)
+  imageUrl          String
+  specifications    String          // JSON string of specs
+  tags              String          // Comma-separated or JSON
+  sellerId          String
+  seller            Seller          @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+
+  assessments       RiskAssessment[]
+  cartItems         CartItem[]
+  orderItems        OrderItem[]
+}
+
+model RiskAssessment {
+  id                  String       @id @default(uuid())
+  productId           String
+  product             Product      @relation(fields: [productId], references: [id], onDelete: Cascade)
+  overallScore        Int          // 0 to 100 (where higher indicates higher observed risk)
+  confidenceScore     Float        @default(0.95)
+  riskTier            String       // "LOW", "MODERATE", "HIGH", "CRITICAL"
+  summary             String
+  verdict             String       // "SAFE_CLEARANCE", "VERIFIED_TRUST", "STEP_UP_REVIEW", "ANOMALY_HALT"
+  priceAnomalyScore   Float
+  sellerRepScore      Float
+  listingScore        Float
+  velocityScore       Float
+  evidenceScore       Float
+  isInsufficientData  Boolean      @default(false)
+  evaluatedAt         DateTime     @default(now())
+
+  signals             RiskSignal[]
+}
+
+model RiskSignal {
+  id              String          @id @default(uuid())
+  assessmentId    String
+  assessment      RiskAssessment  @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  name            String
+  category        String          // "PRICE", "SELLER", "LISTING", "VELOCITY", "EVIDENCE"
+  score           Float
+  severity        String          // "INFO", "LOW", "MEDIUM", "HIGH", "CRITICAL"
+  evidence        String
+  provenance      String
+  confidence      Float           @default(0.9)
+  createdAt       DateTime        @default(now())
+}
+
+model Cart {
+  id          String      @id @default(uuid())
+  sessionId   String      @unique
+  currency    String      @default("USD")
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  items       CartItem[]
+}
+
+model CartItem {
+  id          String      @id @default(uuid())
+  cartId      String
+  cart        Cart        @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  productId   String
+  product     Product     @relation(fields: [productId], references: [id], onDelete: Cascade)
+  quantity    Int         @default(1)
+  unitPrice   Float
+  addedAt     DateTime    @default(now())
+
+  @@unique([cartId, productId])
+}
+
+model Order {
+  id                String           @id @default(uuid())
+  orderNumber       String           @unique
+  status            String           @default("CREATED") // "CREATED", "AWAITING_APPROVAL", "APPROVED", "CAPTURING", "COMPLETED", "CANCELLED", "FAILED"
+  currency          String           @default("USD")
+  subtotal          Float
+  shippingFee       Float            @default(0.0)
+  taxFee            Float            @default(0.0)
+  totalAmount       Float
+  buyerName         String?
+  buyerEmail        String?
+  shippingAddress   String?          // JSON formatted
+  paypalOrderId     String?          @unique
+  riskSummary       String?          // JSON snapshot of cart risk profile
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  items             OrderItem[]
+  captures          PaymentCapture[]
+}
+
+model OrderItem {
+  id          String      @id @default(uuid())
+  orderId     String
+  order       Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId   String
+  product     Product     @relation(fields: [productId], references: [id])
+  quantity    Int
+  unitPrice   Float
+  title       String
+  imageUrl    String
+}
+
+model PaymentCapture {
+  id                  String      @id @default(uuid())
+  orderId             String
+  order               Order       @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  paypalCaptureId     String      @unique
+  paypalOrderId       String
+  status              String      // "COMPLETED", "DECLINED", "PENDING"
+  amount              Float
+  currency            String      @default("USD")
+  rawResponse         String?     // Full captured response payload JSON
+  capturedAt          DateTime    @default(now())
+}
+
+model AgentSession {
+  id          String         @id @default(uuid())
+  title       String         @default("Shopping Assistance")
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  messages    AgentMessage[]
+}
+
+model AgentMessage {
+  id          String        @id @default(uuid())
+  sessionId   String
+  session     AgentSession  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  role        String        // "user", "assistant", "system", "tool"
+  content     String
+  toolCalls   String?       // JSON of tool calls and results
+  metadata    String?       // Structured intent, matched products, recommendation
+  createdAt   DateTime      @default(now())
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  name          String?
+  passwordHash  String
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+

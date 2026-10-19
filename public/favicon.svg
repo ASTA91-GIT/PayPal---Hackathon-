@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="favShieldGrad" x1="15%" y1="10%" x2="85%" y2="90%">
+      <stop offset="0%" stop-color="#C4B5FD" />
+      <stop offset="50%" stop-color="#A9D9F0" />
+      <stop offset="100%" stop-color="#F0BDD3" />
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="14" fill="#171722" fill-opacity="0.9" />
+
+  <g transform="translate(4.5, 4.5) scale(0.55)">
+    <path
+      d="M50 8
+         C63 8 78 12 85 18
+         C86 38 84 62 50 92
+         C16 62 14 38 15 18
+         C22 12 37 8 50 8Z"
+      stroke="url(#favShieldGrad)"
+      stroke-width="5"
+      stroke-linejoin="round"
+      fill="none"
+    />
+    <path d="M36 31 C44 26 56 26 64 31" stroke="#F0BDD3" stroke-width="4" stroke-linecap="round" />
+    <path
+      d="M28 42 L35 42 L42 62 L67 62 L74 46 L37 46"
+      stroke="url(#favShieldGrad)"
+      stroke-width="5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <circle cx="44" cy="73" r="5" fill="#A9D9F0" />
+    <circle cx="65" cy="73" r="5" fill="#F0BDD3" />
+    <circle cx="50" cy="22" r="3.5" fill="#FFFFFF" />
+  </g>
+</svg>
