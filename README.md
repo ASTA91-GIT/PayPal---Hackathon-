@@ -1,104 +1,198 @@
-# 🛒 TrustCart AI — Autonomous AI Shopping & Trust-Intelligence Platform
-
-> **PayPal AI Hackathon 2026 Submission**  
-> *A full-stack AI shopping agent, explainable 5-vector fraud intelligence engine, and verified PayPal checkout integration.*
-
----
+# 🛒 TrustCart AI
 
 <p align="center">
-  <img src="public/brand/trustcart-animated-pipeline.svg" alt="TrustCart AI Animated Architecture &amp; Execution Pipeline" width="100%" />
+  <strong>Shop Smarter. Detect Scams. Buy with Confidence.</strong><br />
+  <em>Autonomous AI Shopping Assistant &amp; 5-Vector Fraud Intelligence Platform</em><br />
+  <strong>Built for the PayPal AI Hackathon 2026</strong>
 </p>
 
-```
-┌────────────────────────────┐     ┌────────────────────────────┐     ┌────────────────────────────┐
-│       🤖 DYNAMIC AGENT     │──►  │   🛡️ 5-VECTOR RISK ENGINE  │──►  │    💳 PAYPAL ORDERS V2     │
-├────────────────────────────┤     ├────────────────────────────┤     ├────────────────────────────┤
-│ • Zero Hardcoded Rules     │     │ • Markdown Anomaly (35)    │     │ • Server Price Authority   │
-│ • Typo & Slang Resilience  │     │ • Merchant History (20)    │     │ • Instant Sandbox Capture  │
-│ • Anaphora Resolution      │     │ • Bot Review Burst (15)    │     │ • Cryptographic Receipt    │
-└────────────────────────────┘     └────────────────────────────┘     └────────────────────────────┘
-```
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-16.4-black?style=flat-square&logo=next.js" alt="Next.js 16" />
+  <img src="https://img.shields.io/badge/React-19.3-blue?style=flat-square&logo=react" alt="React 19" />
+  <img src="https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?style=flat-square&logo=tailwindcss" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/PayPal-Sandbox_Orders_v2-00457C?style=flat-square&logo=paypal" alt="PayPal Sandbox" />
+  <img src="https://img.shields.io/badge/Prisma-SQLite-2D3748?style=flat-square&logo=prisma" alt="Prisma &amp; SQLite" />
+  <img src="https://img.shields.io/badge/Vitest-68_Tests_Passing-6E9F18?style=flat-square&logo=vitest" alt="Vitest Passing" />
+  <img src="https://img.shields.io/badge/AI-Dynamic_Model_Driven-8A2BE2?style=flat-square" alt="Dynamic AI" />
+</p>
+
+<p align="center">
+  <img src="public/brand/trustcart-animated-pipeline.svg" alt="TrustCart AI Execution Pipeline" width="100%" />
+</p>
 
 ---
 
-## 🌟 Executive Summary
+## 🌟 What is TrustCart AI?
 
-**TrustCart AI** addresses the growing crisis of e-commerce deception: counterfeit deals, scalped hardware, astroturfed reviews, and adversarial checkout manipulations. 
+**TrustCart AI** is an intelligent e-commerce shopping agent and trust platform that protects buyers from counterfeit deals, fake review bursts, and predatory pricing anomalies.
 
-Unlike traditional shopping bots that blindly recommend sponsored listings, TrustCart AI acts as an autonomous guardian:
-1. **Dynamic Intent Understanding**: Interprets natural, informal user requests (including typos, slang, and combined multi-intent queries) without hardcoded question lists or string routing.
-2. **Deterministic 5-Vector Risk Engine**: Calculates an explainable $0-100$ observed risk score evaluating price markdown anomalies, merchant dispute histories, hardware specification integrity, and bot velocity bursts.
-3. **Server Price Authority**: Eliminates client tampering by calculating taxes, shipping, and discounts directly from trusted database models.
-4. **Official PayPal Sandbox Integration**: Executes transactions via the official PayPal Orders API v2, issuing verified cryptographic capture receipts.
+It combines a **natural-language shopping assistant** with a **deterministic 5-vector fraud risk engine** and server-verified **PayPal Orders API v2** checkout—giving consumers verified confidence before every transaction.
 
 ---
 
-## 🚀 Key Routes & Features
+## 📸 Product Preview Gallery
 
-| Route | Description |
-| :--- | :--- |
-| **`/`** | Cinematic Landing Page with 3D Hologram, 4-Pack Bento Telemetry, and Live Catalog highlights. |
-| **`/discover`** | Product Discovery Catalog with multi-category filtering, max risk sliders, and real-time sorting. |
-| **`/agent`** | Autonomous AI Shopping Workspace with natural language intent extraction, live tool execution logs, and structured output. |
-| **`/products/[id]`** | Product Detail with technical specifications, seller reputation metrics, and risk clearance badges. |
-| **`/investigate/[id]`** | Deep Forensic Trust Report breaking down the 5 risk vectors, itemized evidence signals, and intercepting rule logic. |
-| **`/compare`** | Side-by-Side Product Comparison Matrix comparing specs, MSRP deltas, and risk tiers. |
-| **`/cart`** | Shopping Cart with server-recalculated pricing, quantity adjustments, and average risk rollup. |
-| **`/checkout`** | PayPal Sandbox Checkout preparation, risk certification approval, and official PayPal button integration. |
-| **`/orders`** | Verified Order History tracking transaction statuses, amounts, and capture IDs. |
-| **`/orders/[id]`** | Detailed Order Receipt with cryptographic PayPal capture verification and printable invoice. |
-| **`/dashboard`** | Trust Intelligence Cockpit matching the Stitch telemetry feed: Live Transaction Evaluation stream, deep dossier, and neural spark bars. |
-| **`/login`** | Completely transparent, immersive login interface floating directly over the 3D scene without opaque cards. |
-| **`/register`** | Matching transparent registration interface with scrypt password hashing and session tokens. |
+<table width="100%">
+  <tr>
+    <td width="50%" valign="top">
+      <h3 align="center">1. Landing Page</h3>
+      <img src="public/readme/landing-page.png" alt="TrustCart AI Landing Page" width="100%" />
+      <p align="center"><em>Interactive 3D Holographic Trust Shield with live market telemetry and verified catalog highlights.</em></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3 align="center">2. AI Shopping Assistant</h3>
+      <img src="public/readme/ai-assistant.png" alt="AI Shopping Assistant" width="100%" />
+      <p align="center"><em>Model-driven shopping workspace with dynamic intent interpretation, slang/typo handling, and live tool traces.</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3 align="center">3. Product Discovery Catalog</h3>
+      <img src="public/readme/product-discovery.png" alt="Product Discovery" width="100%" />
+      <p align="center"><em>Multi-category browser with real-time risk-tolerance filters, budget constraints, and instant clearance badges.</em></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3 align="center">4. Forensic Scam Investigation</h3>
+      <img src="public/readme/risk-investigation.png" alt="Forensic Risk Investigation" width="100%" />
+      <p align="center"><em>Deep risk audit exposing counterfeit hardware listings through 5 explainable telemetry vectors.</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3 align="center">5. Side-by-Side Product Comparison</h3>
+      <img src="public/readme/product-comparison.png" alt="Product Comparison Matrix" width="100%" />
+      <p align="center"><em>Comparative analysis matrix evaluating hardware specifications, MSRP deltas, and merchant credibility.</em></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3 align="center">6. Verified PayPal Sandbox Checkout</h3>
+      <img src="public/readme/checkout.png" alt="PayPal Checkout" width="100%" />
+      <p align="center"><em>Server price authority and instant risk certification paired with official PayPal Sandbox Smart Payment buttons.</em></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <h3 align="center">7. Order Tracking &amp; Cryptographic Receipt</h3>
+      <img src="public/readme/order-history.png" alt="Order History and Receipts" width="100%" />
+      <p align="center"><em>Immutable order receipts verified by PayPal capture transactions and server-side settlement validation.</em></p>
+    </td>
+    <td width="50%" valign="top">
+      <h3 align="center">8. Trust Intelligence Cockpit</h3>
+      <img src="public/readme/trust-dashboard.png" alt="Trust Intelligence Dashboard" width="100%" />
+      <p align="center"><em>Real-time merchant evaluation stream, neural risk radar, and cross-merchant anomaly telemetry.</em></p>
+    </td>
+  </tr>
+</table>
+
+---
+
+## 🗺️ Visual User Journey
+
+```mermaid
+flowchart LR
+    A["🔍 Discover<br>Browse catalog with<br>risk tolerance filters"] --> B["🤖 Ask AI<br>Chat naturally with<br>slang, typos & budgets"]
+    B --> C["🛡️ Evaluate Risk<br>5-vector forensic audit<br>scores listing safety"]
+    C --> D["⚖️ Compare<br>Side-by-side spec &<br>reputation breakdown"]
+    D --> E["💳 Checkout<br>Server price authority &<br>PayPal Sandbox Orders v2"]
+    E --> F["📦 Track Order<br>Cryptographic receipt with<br>verified capture record"]
+
+    classDef step fill:#1E1B4B,stroke:#818CF8,stroke-width:2px,color:#F8FAFC;
+    class A,B,C,D,E,F step;
+```
+
+1. **🔍 Discover**: Explore genuine electronics and gear with dynamic risk-tolerance sliders.
+2. **🤖 Ask AI**: Request recommendations (*"find a keeb below 80 bucks"*); the agent resolves intent without hardcoded rules.
+3. **🛡️ Evaluate Risk**: An explainable 5-vector audit flags markdown anomalies, merchant dispute histories, and review bot spikes.
+4. **⚖️ Compare**: Review candidate alternatives side-by-side across MSRP deltas and risk tiers.
+5. **💳 Checkout**: Authoritative server pricing stages items into an official PayPal Orders v2 sandbox checkout.
+6. **📦 Track Order**: View confirmed purchases with cryptographic PayPal capture receipts and persistent transaction logs.
+
+---
+
+## ⚡ Core Feature Highlights
+
+| Feature | Description | Key Highlight |
+| :--- | :--- | :--- |
+| **🤖 AI Shopping Assistant** | Dynamic model-driven agent handling arbitrary natural phrasing, typos, and multi-turn context. | Zero hardcoded branches; asks for clarification when requests are ambiguous. |
+| **🛡️ 5-Vector Risk Engine** | Explainable $0-100$ risk scoring across price markdowns, merchant dispute histories, and review velocity. | Flags counterfeit listings before checkout without opaque black-box guessing. |
+| **🔍 Smart Discovery & Filters** | Filter catalog items by category, maximum budget, and maximum acceptable risk score ($0-100$). | Real-time sorting and risk tier classification (`LOW`, `MODERATE`, `HIGH`, `CRITICAL`). |
+| **⚖️ Product Comparison** | Side-by-side matrices comparing specifications, MSRP variance, and seller ratings. | Enables confident decision-making between multiple viable alternatives. |
+| **💳 PayPal Orders v2 Sandbox** | Full integration with official PayPal JavaScript SDK v6 and Orders API v2 capture. | Includes 1-Click Sandbox Simulation mode for immediate zero-friction evaluations. |
+| **📦 Verified Order Receipts** | Persistent order histories with cryptographic capture IDs and printable receipts. | Prevents checkout price-tampering with 100% server pricing authority. |
+
+---
+
+## 🏗️ High-Level System Architecture
+
+```mermaid
+flowchart TD
+    User(["👤 Buyer / Operator"]) <--> UI["🎨 Next.js 16 Web Application<br>(Dual-Theme Pastel Glassmorphism & Three.js 3D Shield)"]
+    
+    UI <--> Agent["🤖 Autonomous Agent Orchestrator<br>(Discourse Classifier, Semantic Mapping & Context Resolver)"]
+    
+    Agent --> Tools["🔧 Controlled Agent Tools<br>(Search Products · Assess Listing · Compare · Prepare Cart)"]
+    
+    Tools <--> Risk["🛡️ 5-Vector Deterministic Risk Engine<br>(Markdown · Dispute Rate · Spec Integrity · Bot Review Velocity · Provenance)"]
+    
+    Tools <--> DB[("🗄️ SQLite Dev Database<br>(Prisma ORM: Products, Sellers, Risk Signals, Orders)")]
+    
+    UI --> PayPal["💳 PayPal Sandbox Gateway<br>(Official Orders API v2: Create Order & Capture Authorization)"]
+    
+    PayPal <--> DB
+
+    classDef primary fill:#1E1B4B,stroke:#818CF8,stroke-width:2px,color:#F8FAFC;
+    classDef secondary fill:#0F172A,stroke:#38BDF8,stroke-width:2px,color:#F8FAFC;
+    classDef accent fill:#064E3B,stroke:#34D399,stroke-width:2px,color:#F8FAFC;
+    class UI primary;
+    class Agent,Tools secondary;
+    class Risk,PayPal,DB accent;
+```
 
 ---
 
 ## 🛠️ Technology Stack
 
-- **Framework**: Next.js 16 (App Router, Turbopack, React 19)
-- **Language**: TypeScript (strict type checking)
-- **Styling**: Tailwind CSS v4 + Vanilla CSS Custom Properties
-- **3D & Graphics**: Three.js + Framer Motion
-- **Validation**: Zod runtime schema validation
-- **Database & ORM**: SQLite (zero-config local dev) / PostgreSQL compatible via Prisma ORM
-- **Payment Gateway**: Official PayPal JavaScript SDK v6 (`@paypal/react-paypal-js`) & PayPal Orders API v2
-- **Testing**: Vitest unit, parameterized, and property-based invariant test suite
+| Layer | Technologies Used |
+| :--- | :--- |
+| **Frontend Framework** | **Next.js 16** (App Router, Turbopack, React 19) |
+| **Styling & Design** | **Tailwind CSS v4**, Vanilla CSS Design Tokens, Dual-Theme Pastels |
+| **3D Graphics & Motion** | **Three.js** (Holographic Icosahedron Shield), **Framer Motion** |
+| **Backend & Validation** | Next.js API Route Handlers, **Zod** Schema Validation, **Scrypt** Auth |
+| **Database & Persistence** | **SQLite** with **Prisma ORM** (22 products, 8 sellers, pre-computed risk data) |
+| **Payment Gateway** | **PayPal Orders API v2** (`@paypal/react-paypal-js`), Webhooks, Sandbox Capture |
+| **AI Intelligence** | Model-Driven Orchestrator (Google Gemini / OpenAI compatible REST client + Semantic Fallback) |
+| **Testing** | **Vitest** (68 passing unit, integration & parameterised generalisation tests) |
 
 ---
 
-## 💳 PayPal Sandbox Setup & Testing
+## 🚀 Quick Setup & Testing
 
-TrustCart AI supports **both** live PayPal Sandbox developer credentials and an **Instant 1-Click Sandbox Simulation Mode**:
+### 1. Clone & Install
+```bash
+git clone https://github.com/ASTA91-GIT/PayPal---Hackathon-.git
+cd PayPal---Hackathon-
+npm install
+```
 
-### Option A: Instant 1-Click Sandbox Capture (Zero-Setup Evaluation)
-1. Add any item to your cart and navigate to `/checkout`.
-2. Check the **"Risk Certification"** toggle.
-3. Click the cyan **"⚡ Instant Quick Sandbox Capture"** button.
-4. The server validates pricing against the database, executes simulated capture authorization, records a persistent `PaymentCapture` transaction in SQLite, and forwards you to the verified Order Receipt (`/orders/[id]`).
+### 2. Configure Environment
+```bash
+cp .env.example .env
+```
+*(Default `.env` runs zero-config SQLite out of the box. `GEMINI_API_KEY` and `OPENAI_API_KEY` are optional.)*
 
-### Option B: Live PayPal Sandbox Credentials
-1. Visit the [PayPal Developer Dashboard](https://developer.paypal.com/dashboard/applications/sandbox).
-2. Create or copy your Sandbox REST App Client ID and Secret.
-3. Update `.env`:
-   ```env
-   NEXT_PUBLIC_PAYPAL_CLIENT_ID="your_sandbox_client_id"
-   PAYPAL_CLIENT_SECRET="your_sandbox_client_secret"
-   PAYPAL_ENVIRONMENT="sandbox"
-   ```
-4. Restart `npm run dev`.
-5. On `/checkout`, the official PayPal Smart Buttons will render. Complete checkout using any standard PayPal Sandbox Personal buyer account.
+### 3. Seed Database & Start Server
+```bash
+npm run db:push
+npm run db:seed
+npm run dev
+```
+Open **[http://localhost:3000](http://localhost:3000)** in your browser.  
+Demo Operator Login: `olivia.vance@techcorp.io` / `Password123!`
 
----
-
-## 🧪 Running Automated Tests
-
-TrustCart AI includes 68 automated unit, integration, and parameterized generalisation invariant tests:
-
+### 4. Run Automated Test Suite
 ```bash
 npm run test
 ```
-
-### Verified Test Suites:
 ```
  ✓ tests/cartCalculations.test.ts (4 tests) - Server price authority & anti-tamper
  ✓ tests/riskEngine.test.ts (4 tests) - 5-Vector deterministic risk scoring
@@ -109,50 +203,25 @@ Test Files  4 passed (4)
      Tests  68 passed (68)
 ```
 
-To run a production build and type-check:
-```bash
-npm run build
-npm run start
-```
+---
+
+## 💳 PayPal Sandbox Notes
+
+- **Instant 1-Click Simulation**: When evaluating without external PayPal sandbox credentials, click the **"⚡ Instant Quick Sandbox Capture"** button on `/checkout` to execute server-side validation and issue a verified capture receipt.
+- **Live PayPal Sandbox Credentials**: To test with your personal PayPal sandbox account, add your `NEXT_PUBLIC_PAYPAL_CLIENT_ID` and `PAYPAL_CLIENT_SECRET` to `.env`. The official PayPal Smart Payment Buttons will render automatically.
 
 ---
 
-## 🎬 3-Minute Live Hackathon Demo Walkthrough
+## ⚖️ Copyright & Attribution
 
-1. **Step 1: The Landing Page (`/`)**
-   - Toggle between **"Dreamy" (Light Mode)** and **"Midnight" (Dark Mode)** in the header.
-   - Interact with the Three.js 3D Holographic Trust Shield. Observe live telemetry metrics ($42.8M volume, 9ms SLA).
-2. **Step 2: AI Shopping Agent (`/agent`)**
-   - Type naturally with slang or typos: *"find a keeb below 80 bucks"*.
-   - Watch the agent resolve the category to Keyboards, parse the $80 budget limit, invoke `search_products`, audit with `assess_listing`, and stream honest tool execution traces.
-   - Follow up contextually: *"is it safe?"* or *"compare them"*.
-3. **Step 3: Forensic Deal Investigation (`/investigate/prod-gpu-fake-010`)**
-   - Inspect the counterfeit RTX 4090 listed at $189.
-   - Review the **Critical Risk score (85/100)**: flags severe price markdown (90% below MSRP), short seller tenure, and bot review bursts.
-4. **Step 4: Verified Cart & PayPal Checkout (`/cart` → `/checkout`)**
-   - Observe server-recalculated subtotals, free shipping thresholds, and tax fees.
-   - Click **Proceed to PayPal Checkout**.
-   - Check the risk clearance box and complete payment via **PayPal Smart Payment Buttons** or **Instant Quick Sandbox Capture**.
-5. **Step 5: Order Receipt & Trust Dashboard (`/orders/[id]` & `/dashboard`)**
-   - Inspect the cryptographic PayPal Capture Certificate with persistent Capture ID.
-   - Open `/dashboard` to inspect live transaction stream telemetry, neural heuristics radar, and cross-merchant anomaly graphs.
-
----
-
-## ⚖️ Copyright & Legal Disclaimers
-
-### Copyright Notice
 ```
 Copyright (c) 2026 TrustCart AI Contributors. All rights reserved.
 Developed for the PayPal AI Hackathon 2026.
 ```
 
-### License
-This project is open-source software licensed under the **[MIT License](LICENSE)**. You are free to inspect, modify, and distribute this codebase in accordance with the license conditions.
-
-### Third-Party Trademarks & Attribution
-- **PayPal**, **PayPal Sandbox**, **PayPal Orders API v2**, and respective logos are trademarks or registered trademarks of **PayPal Holdings, Inc.** or its affiliates.
-- All product names, logos, brands, and registered trademarks featured or referenced within this demonstration catalog are the property of their respective trademark holders. Their mention does not imply endorsement, affiliation, or sponsorship.
+- Distributed under the **[MIT License](LICENSE)**.
+- **PayPal**, **PayPal Sandbox**, **PayPal Orders API v2**, and respective logos are trademarks or registered trademarks of **PayPal Holdings, Inc.**
+- Product names and reference brands in demonstration data belong to their respective owners.
 
 ---
 *Built with passion for the PayPal AI Hackathon 2026.*
