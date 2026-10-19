@@ -8,15 +8,15 @@
 <p align="center">
   <img src="public/brand/trustcart-animated-pipeline.svg" alt="TrustCart AI Animated Architecture &amp; Execution Pipeline" width="100%" />
 </p>
+```
 
-```
-┌─────────────────────────┐      ┌─────────────────────────┐      ┌─────────────────────────┐
-│   🤖 Dynamic Agent      │ ───► │  🛡️ 5-Vector Risk Engine│ ───► │   💳 PayPal Orders v2   │
-│  - Zero Hardcoded Rules │      │  - Markdown Anomaly (35)│      │  - Server Price Authority│
-│  - Typo & Slang Resilient│     │  - Merchant History (20)│      │  - Instant Sandbox Capture│
-│  - Anaphora Resolution  │      │  - Bot Review Burst (15)│      │  - Cryptographic Receipt│
-└─────────────────────────┘      └─────────────────────────┘      └─────────────────────────┘
-```
+┌────────────────────────────┐     ┌────────────────────────────┐     ┌────────────────────────────┐
+│       🤖 DYNAMIC AGENT     │──► │    🛡️ 5-VECTOR RISK ENGINE │ ──► │      💳 PAYPAL ORDERS V2    │
+├────────────────────────────┤     ├────────────────────────────┤     ├────────────────────────────  ┤
+│ • Zero Hardcoded Rules     │     │ • Markdown Anomaly (35)    │     │ • Server-Side Price Authority│
+│ • Typo & Slang Resilience  │     │ • Merchant History (20)    │     │ • Instant Sandbox Capture    │
+│ • Anaphora Resolution      │     │ • Bot Review Burst (15)    │     │ • Cryptographic Receipt      │
+└────────────────────────────┘     └────────────────────────────┘     └────────────────────────────┘
 
 ---
 
